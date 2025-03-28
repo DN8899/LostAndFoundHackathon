@@ -2,9 +2,7 @@ from PIL.DdsImagePlugin import item1
 from flask import Flask, Blueprint, request, jsonify
 from Database.db import db
 from Models.item import Item
-
-from Backend.Models import post, item
-from Backend.Models.post import Post
+from Models.post import Post
 
 post_bp = Blueprint('post_bp', __name__)
 @post_bp.route('/', methods=['POST'])
@@ -46,3 +44,20 @@ def post_item(post_id):
         "date_posted": post.date_posted,
     }
     return jsonify({"item": post_data}), 200
+
+@post_bp.route('/<int:item_id>/complete', methods=['POST'])
+def complete_post(item_id):
+    item = Item.query.get(item_id)
+
+    if not item:
+        return jsonify({"Error": "Item not found"}), 404
+
+    item.retrieved = True
+    item.status = 'Found'
+
+    db.session.commit()
+
+    return jsonify({"message": "Item marked as found", "item_id": item.item_id, "status": item.status}), 200
+
+
+
