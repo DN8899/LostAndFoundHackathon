@@ -14,3 +14,5 @@ class Item(db.Model):
     date_expired = db.Column(db.Text)
     owner_id = db.Column(db.Integer, db.ForeignKey('user.user_id'), nullable=True)
 
+    post = db.relationship('Post', backref='item_post', uselist=False)
+
