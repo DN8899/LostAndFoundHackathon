@@ -5,7 +5,7 @@ from Routes.user_routes import user_bp
 from Routes.item_routes import item_bp
 
 app = Flask(__name__)
-
+app.url_map.strict_slashes = False
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -17,7 +17,7 @@ app.register_blueprint(user_bp, url_prefix='/users')
 
 app.register_blueprint(item_bp, url_prefix='/items')
 
-CORS(app, resources={r"/*": {"origins": "*"}})
+CORS(app, resources={r"/*": {"origins": "*", "methods": ["GET", "POST", "DELETE"], "allow_headers": ["Content-Type"]}})
 # Runs once
 with app.app_context():
     db.create_all()

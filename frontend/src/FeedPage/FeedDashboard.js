@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "@mui/material";
 
 const FeedDashboard = () => {
   const [users, setUsers] = useState([]);
@@ -10,52 +11,25 @@ const FeedDashboard = () => {
   const [newPassword, setPassword] = useState("");
 
   useEffect(() => {
-    getUsers();
+    const getItems = () => {
+      axios
+        .get("http://localhost:5000/items")
+        .then((response) => setItems(response.data))
+        .catch((error) =>
+          console.error("Error getting the items nigga", error)
+        );
+    };
+    getItems();
   }, []);
-
-  const getUsers = () => {
-    axios
-      .get("http://localhost:5000/users")
-      .then((response) => setUsers(response.data))
-      .catch((error) => console.error("Error fetching items", error));
-  };
-
-  const createUser = () => {
-    axios
-      .post("http://localhost:5000/users", {
-        name: newName,
-        email: newEmail,
-        password: newPassword,
-      })
-      .then(() => {
-        setNewName("");
-        setNewEmail("");
-      })
-      .catch((error) => console.error("Error creating the user", error));
-  };
 
   return (
     <div className="p-4">
-      <h1 className="text-xl font-bold">Admin Dashboard</h1>
-
-      {/* Add User */}
-      <input
-        type="text"
-        placeholder="Username"
-        value={newName}
-        onChange={(e) => setNewName(e.target.value)}
-        className="border p-2"
-      />
-      <input
-        type="email"
-        placeholder="Email"
-        value={newEmail}
-        onChange={(e) => setNewEmail(e.target.value)}
-        className="border p-2 ml-2"
-      />
-      <button onClick={createUser} className="bg-green-500 text-white p-2 ml-2">
-        Add User
-      </button>
+      <h1 className="text-xl font-bold">Missing Items</h1>
+      {items.map((item) => (
+        <li key={item.id}>
+          <Link to={`/item//${item.item_id}`}>{item.name}</Link>
+        </li>
+      ))}
     </div>
   );
 };
