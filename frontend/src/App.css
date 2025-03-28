@@ -1,38 +1,137 @@
-.App {
-  text-align: center;
+/* Resetting some basic styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f4f4;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Sidebar (Drawer) */
+.MuiDrawer-paper {
+    background-color: #f7b267;
+    color: #ecf0f1;
+    width: 240px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.MuiListItemText-root {
+    color: #ecf0f1;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.MuiDrawer-paper:hover {
+    background-color: #34495e;
 }
 
-.App-link {
-  color: #61dafb;
+/* App Bar (Header) */
+.MuiAppBar-root {
+    background-color: #ffffff;
+    color: #333;
+    border-bottom: 1px solid #e0e0e0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.MuiToolbar-root {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Button Styles */
+.MuiButton-root {
+    border-radius: 20px;
+    padding: 8px 16px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.MuiButton-containedPrimary {
+    background-color: #3498db;
+    color: white;
+}
+
+.MuiButton-containedPrimary:hover {
+    background-color: #2980b9;
+}
+
+.MuiButton-outlined {
+    color: #e74c3c;
+    border-color: #e74c3c;
+}
+
+.MuiButton-outlined:hover {
+    background-color: blue;
+    color: white;
+}
+
+/* Text Field Styles */
+.MuiTextField-root {
+    margin-bottom: 16px;
+}
+
+.MuiOutlinedInput-root {
+    border-radius: 12px;
+}
+
+/* Card Styles */
+.MuiCard-root {
+    margin-bottom: 16px;
+    padding: 16px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.MuiCard-root:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.MuiCardContent-root {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Dialog Styles */
+.MuiDialog-paper {
+    border-radius: 16px;
+}
+
+.MuiDialogTitle-root {
+    font-weight: bold;
+    text-align: center;
+}
+
+.MuiDialogContent-root {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.MuiDialogActions-root {
+    justify-content: center;
+}
+
+/* Image Styling */
+img {
+    max-width: 100%;
+    border-radius: 12px;
+}
+
+/* Toastify Notification */
+.Toastify__toast {
+    border-radius: 12px;
+    font-weight: bold;
+    padding: 12px;
+    color: #fff;
+}
+
+.Toastify__toast--success {
+    background-color: #2ecc71;
+}
+
+.Toastify__toast--error {
+    background-color: #e74c3c;
+}
+
+.Toastify__progress-bar {
+    background-color: #fff;
 }
