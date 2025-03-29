@@ -191,7 +191,7 @@ const App = () => {
           <Card>
             <CardContent>
               <Typography variant="h5">
-                <FeedDashboard />
+                <FeedDashboard/>
               </Typography>
               {posts.length === 0 ? (
                 <Typography>No Posts yet. Click "Post" to add one!</Typography>
