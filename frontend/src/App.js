@@ -22,6 +22,7 @@ import {
   Toolbar,
   Typography,
 } from "@mui/material";
+import FeedDashboard from "./FeedPage/FeedDashboard";
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -189,7 +190,9 @@ const App = () => {
 
           <Card>
             <CardContent>
-              <Typography variant="h5">Feed</Typography>
+              <Typography variant="h5">
+                <FeedDashboard />
+              </Typography>
               {posts.length === 0 ? (
                 <Typography>No Posts yet. Click "Post" to add one!</Typography>
               ) : (

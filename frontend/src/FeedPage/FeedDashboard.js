@@ -27,7 +27,7 @@ const FeedDashboard = () => {
       <h1 className="text-xl font-bold">Missing Items</h1>
       {items.map((item) => (
         <li key={item.id}>
-          <Link to={`/item//${item.item_id}`}>{item.name}</Link>
+          <Link to={`/item/${item.item_id}`}>{item.name}</Link>
         </li>
       ))}
     </div>

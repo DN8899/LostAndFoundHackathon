@@ -1,6 +1,8 @@
 from flask import Flask
 from flask_cors import CORS
 from Database.db import db
+from Login.login import login_bp
+from Routes.post_routes import post_bp
 from Routes.user_routes import user_bp
 from Routes.item_routes import item_bp
 
@@ -16,6 +18,8 @@ db.init_app(app)
 app.register_blueprint(user_bp, url_prefix='/users')
 
 app.register_blueprint(item_bp, url_prefix='/items')
+app.register_blueprint(post_bp, url_prefix='/posts')
+app.register_blueprint(login_bp, url_prefix='/login')
 
 CORS(app, resources={r"/*": {"origins": "*", "methods": ["GET", "POST", "DELETE"], "allow_headers": ["Content-Type"]}})
 # Runs once

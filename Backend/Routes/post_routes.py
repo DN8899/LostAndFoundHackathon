@@ -7,12 +7,14 @@ from Models.post import Post
 post_bp = Blueprint('post_bp', __name__)
 @post_bp.route('/', methods=['POST'])
 def create_post():
-    def create_post():
-        data = request.json
-        new_post = Post(name=data['name'], description=data['description'])
-        db.session.add(new_post)
-        db.session.commit()
-        return jsonify({'id': new_post.id}), 201
+    data = request.json
+
+    user_id = data.get("user_id")
+    item_id = data.get("item_id")
+    new_post = Post(user_id=user_id, item_id=item_id)
+    db.session.add(new_post)
+    db.session.commit()
+    return jsonify({'id': new_post.id}), 201
 
 @post_bp.route('/', methods=['GET'])
 def get_post():
